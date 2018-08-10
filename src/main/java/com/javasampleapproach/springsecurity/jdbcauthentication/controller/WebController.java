@@ -36,9 +36,9 @@ public class WebController {
         return "login";
     }
 
-    @RequestMapping(value="/sign")
+    @RequestMapping(value="/register")
     public String sign(){
-        return "sign";
+        return "register";
     }
 
     @Autowired
@@ -54,9 +54,9 @@ public class WebController {
     @RequestMapping(path="/execRegister", method = RequestMethod.POST)
     String create(Model model, @ModelAttribute UserForm userForm){
         jdbcTemplate.update("INSERT INTO users (username, password) values (?, ?)", userForm.getUsername(), userForm.getPassword());
-        jdbcTemplate.update("INSERT INTO user_roles (username, role) values (?, ?)", userForm.getUsername(), "ROLE_ADMIN");
+        jdbcTemplate.update("INSERT INTO user_roles (username, role) values (?, ?)", userForm.getUsername(), "ROLE_USER");
 
-        return "redirect:/sign";
+        return "redirect:/login";
     }
 
 //    public String (){

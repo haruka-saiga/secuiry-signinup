@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/", "/home","/sign", "/execRegister").permitAll().antMatchers("/admin").hasRole("ADMIN")
+				.antMatchers("/", "/home","/register", "/execRegister").permitAll().antMatchers("/admin").hasRole("ADMIN")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
 				.permitAll();
 		http.exceptionHandling().accessDeniedPage("/403");
